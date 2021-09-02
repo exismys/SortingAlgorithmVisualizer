@@ -1,4 +1,5 @@
-import visualizeBubbleSort from "./visualizer_algorithms/bubbleSortVisualizer.js";
+// import visualizeBubbleSort from "./visualizer_algorithms/bubbleSortVisualizer.js";
+import visualizeMergeSort from "./visualizer_algorithms/mergeSortVisualizer.js";
 
 const elements = document.getElementsByClassName("element");
 
@@ -13,4 +14,5 @@ let initializeRandomArray = function(length) {
 
 let arrayToSort = initializeRandomArray(50);
 
-visualizeBubbleSort(arrayToSort, elements);
+//visualizeBubbleSort(arrayToSort, elements);
+visualizeMergeSort(arrayToSort, elements, 0, arrayToSort.length - 1);
