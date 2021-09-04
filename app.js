@@ -26,27 +26,39 @@ const initializeRandomArrayAndLog = function(elements) {
     return array;
 }
 
-async function bsv(){
+async function bsv() {
+    document.getElementById("algorithm-type").innerHTML = "Bubble Sort";
+    logger("Bubble Sort");
+    const speed = parseInt(document.getElementById("speed").value, 10);
+    logger(`Set speed ${speed}`);
     const elements = document.getElementsByClassName("element");
     const arrayToSort = initializeRandomArrayAndLog(elements);
     logger("Sorting...")
-    await visualizeBubbleSort(arrayToSort, elements);
+    await visualizeBubbleSort(arrayToSort, elements, speed);
     logger("Done.")
 }
 
 async function isv() {
+    document.getElementById("algorithm-type").innerHTML = "Insertion Sort";
+    logger("Insertion Sort");
+    const speed = parseInt(document.getElementById("speed").value, 10);
+    logger(`Set speed ${speed}`);
     const elements = document.getElementsByClassName("element");
     const arrayToSort = initializeRandomArrayAndLog(elements);
     logger("Sorting...")
-    await visualizeInsertionSort(arrayToSort, elements)
+    await visualizeInsertionSort(arrayToSort, elements, speed);
     logger("Done.")
 }
 
 async function msv() {
+    document.getElementById("algorithm-type").innerHTML = "Merge Sort";
+    logger("Merge Sort");
+    const speed = parseInt(document.getElementById("speed").value, 10);
+    logger(`Set speed ${speed}`);
     const elements = document.getElementsByClassName("element");
     const arrayToSort = initializeRandomArrayAndLog(elements);
     logger("Sorting...")
-    await visualizeMergeSort(arrayToSort, elements, 100, 0, arrayToSort.length - 1);
+    await visualizeMergeSort(arrayToSort, elements, speed, 0, arrayToSort.length - 1);
     logger("Done.")
 }
 
