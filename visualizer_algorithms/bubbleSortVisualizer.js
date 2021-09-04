@@ -13,14 +13,14 @@ async function compareAndSwap(array, elements, index1, index2) {
         elements[index2].style.height = `${array[index2]}%`;
 
         // Restoring to default color after the swap
-        await timer(100);
+        await timer(10);
         elements[index1].style.backgroundColor = lightGreyish;
         elements[index2].style.backgroundColor = lightGreyish;
     } else {
         // If they are already in order and no action needed, background-color: something greenish
         elements[index1].style.backgroundColor = greenish;
         elements[index2].style.backgroundColor = greenish;
-        await timer(100);
+        await timer(10);
         //Restoring to default colors
         elements[index1].style.backgroundColor = lightGreyish;
         elements[index2].style.backgroundColor = lightGreyish;
@@ -34,7 +34,7 @@ let visualizeBubbleSort = async function(array, elements) {
             elements[j].style.backgroundColor = greyish;
             elements[j + 1].style.backgroundColor = greyish;
 
-            await timer(100);
+            await timer(10);
             await compareAndSwap(array, elements, j, j + 1);
         }
     }
