@@ -26,12 +26,14 @@ body {
     background-color: #EDDFDD;
     border-radius: 16px;
     text-align: center;
-    overflow-wrap: break-word;
 }
 
 #logs {
     text-align: left;
     margin-top: 16px;
+    height: 400px;
+    overflow-wrap: break-word;
+    overflow-y: auto;
 }
 
 #algorithm-type {

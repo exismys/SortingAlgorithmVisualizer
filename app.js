@@ -15,7 +15,6 @@ const logger = function(message) {
     const logContainer = document.getElementById("logs");
     logContainer.appendChild(document.createElement("p").appendChild(document.createTextNode(message)));
     logContainer.appendChild(document.createElement("br"));
-
 }
 
 const initializeRandomArrayAndLog = function(elements) {
@@ -26,7 +25,22 @@ const initializeRandomArrayAndLog = function(elements) {
     return array;
 }
 
+const disableAllButtons = function() {
+    const buttons = document.getElementsByClassName("sort-button");
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].disabled = true;
+    }
+}
+
+const enableAllButtons = function() {
+    const buttons = document.getElementsByClassName("sort-button");
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].disabled = false;
+    }
+}
+
 async function bsv() {
+    disableAllButtons();
     document.getElementById("algorithm-type").innerHTML = "Bubble Sort";
     logger("Bubble Sort");
     const speed = parseInt(document.getElementById("speed").value, 10);
@@ -36,9 +50,11 @@ async function bsv() {
     logger("Sorting...")
     await visualizeBubbleSort(arrayToSort, elements, speed);
     logger("Done.")
+    enableAllButtons();
 }
 
 async function isv() {
+    disableAllButtons();
     document.getElementById("algorithm-type").innerHTML = "Insertion Sort";
     logger("Insertion Sort");
     const speed = parseInt(document.getElementById("speed").value, 10);
@@ -48,9 +64,11 @@ async function isv() {
     logger("Sorting...")
     await visualizeInsertionSort(arrayToSort, elements, speed);
     logger("Done.")
+    enableAllButtons();
 }
 
 async function msv() {
+    disableAllButtons();
     document.getElementById("algorithm-type").innerHTML = "Merge Sort";
     logger("Merge Sort");
     const speed = parseInt(document.getElementById("speed").value, 10);
@@ -60,8 +78,15 @@ async function msv() {
     logger("Sorting...")
     await visualizeMergeSort(arrayToSort, elements, speed, 0, arrayToSort.length - 1);
     logger("Done.")
+    enableAllButtons();
+}
+
+function stopSort() {
+    enableAllButtons();
+    window.stop();
 }
 
 window.bsv = bsv;
 window.isv = isv;
 window.msv = msv;
+window.stopSort = stopSort;
