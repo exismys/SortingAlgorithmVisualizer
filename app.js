@@ -1,11 +1,14 @@
 import visualizeBubbleSort from "./visualizer_algorithms/bubbleSortVisualizer.js";
 import visualizeMergeSort from "./visualizer_algorithms/mergeSortVisualizer.js";
-import visualizeInsertionSort from "./visualizer_algorithms/insertionSortVisualizer.js"
+import visualizeInsertionSort from "./visualizer_algorithms/insertionSortVisualizer.js";
+import visualizeSelectionSort from "./visualizer_algorithms/selectionSortVisualizer.js";
+import {lightGreyish} from "./visualizer_algorithms/globalConstants.js";
 
 let initializeRandomArray = function(elements, length) {
     let arrayToSort = [];
     for (let i = 0; i < length; i++) {
         arrayToSort[i] = Math.floor(Math.random() * 100) + 1;
+        elements[i].style.backgroundColor = lightGreyish;
         elements[i].style.height = `${arrayToSort[i]}%`;
     }
     return arrayToSort;
@@ -81,12 +84,21 @@ async function msv() {
     enableAllButtons();
 }
 
-function stopSort() {
+async function ssv() {
+    disableAllButtons();
+    document.getElementById("algorithm-type").innerHTML = "Selection Sort";
+    logger("SelectionSort");
+    const speed = parseInt(document.getElementById("speed").value, 10);
+    logger(`Set speed ${speed}`);
+    const elements = document.getElementsByClassName("element");
+    const arrayToSort = initializeRandomArrayAndLog(elements);
+    logger("Sorting...")
+    await visualizeSelectionSort(arrayToSort, elements, speed);
+    logger("Done.")
     enableAllButtons();
-    window.stop();
 }
 
 window.bsv = bsv;
 window.isv = isv;
 window.msv = msv;
-window.stopSort = stopSort;
+window.ssv = ssv;
