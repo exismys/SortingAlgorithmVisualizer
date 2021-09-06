@@ -21,7 +21,7 @@ let selectionSort = async function(array, elements, speed) {
         elements[minValueIndex].style.backgroundColor = yellowish;
         const textNode = document.createTextNode("M");
         elements[minValueIndex].appendChild(textNode);
-        await timer(speed);
+        await timer(speed * 10);
         elements[i].style.height = `${array[i]}%`;
         elements[i].style.backgroundColor = lightGreyish;
         elements[minValueIndex].style.backgroundColor = lightGreyish;

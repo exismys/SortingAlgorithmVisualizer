@@ -29,13 +29,13 @@ async function compareAndSwap(array, elements, speed, index1, index2) {
 
 let visualizeBubbleSort = async function(array, elements, speed) {
     for (let i = 0; i < array.length - 1; i++) {
-        for (let j = 0; j < array.length - 1; j++) {
+        for (let j = 0; j < array.length - 1 - i; j++) {
             // Current array indeces to be compared
             elements[j].style.backgroundColor = greyish;
             elements[j + 1].style.backgroundColor = greyish;
 
             await timer(speed);
-            await compareAndSwap(array, elements, j, j + 1);
+            await compareAndSwap(array, elements, speed, j, j + 1);
         }
     }
 }
